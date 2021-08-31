@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operation</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href={% static 'crud.css' %}>
+<body>
+<div class="container">
+    <div class="row rounded p-3 m-3 justify-content-center" id="mainHeading">
+           Function Based View Model Form CRUD Operations 
+    </div>
+    <div class="row m-2 justify-content-center">
+        <div class="col-md-5">
+            <div class="rounded p-2 m-2 crudHeading text-center">
+                Update Your Data
+            </div>
+        </div>
+    </div> 
+    <div class="row m-2 justify-content-center">
+        <div class="col-5">
+            <form action= {% url 'EditData' id  %} method="POST"> {% csrf_token %}
+                <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input required type="text" placeholder="Enter name" name="name" id="exampleInputEmail1" class="form-control" value="{{std.name}}">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Contact</label>
+                <input required type="text" placeholder="Enter contact no." name="contact" id="exampleInputPassword1" class="form-control" value="{{std.contact}}">
+                </div>
+                <button type="submit" class="btn btn-success p-2 ">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>    
+</body>
+</html>

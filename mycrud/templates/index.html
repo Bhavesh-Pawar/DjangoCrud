@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href={% static 'crud.css' %}>
+<body>
+<div class="container">
+    <div class="row rounded p-3 m-3 justify-content-center" id="mainHeading">
+           Function Based View Model Form CRUD Operations 
+    </div>
+    <div class="row m-2">
+        <div class="col-md-5">
+            <div class="rounded p-2 m-2 crudHeading text-center">
+                Add New Data
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="crudHeading m-2 p-2 rounded text-center">
+                Update And Delete Your Data
+            </div>
+        </div>
+    </div> 
+    
+    <div class="row m-2">
+        <div class="col-5">
+            <form action= {% url 'Add' %} method="POST"> {% csrf_token %}
+                <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+                <input required type="text" placeholder="Enter name" name="name" id="exampleInputEmail1" class="form-control" >
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Contact</label>
+                <input required type="text" placeholder="Enter contact no." name="contact" id="exampleInputPassword1" class="form-control" >
+                </div>
+                <button type="submit" class="btn btn-success p-2 ">ADD</button>
+            </form>
+        </div>
+        <div class="col-7">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in std %}
+                  <tr>
+                    <th scope="row">{{j.increament}}</th>
+                    <td>{{i.name}}</td>
+                    <td>{{i.contact}}</td>
+                    <td>
+                    <a href= {% url 'EditPage' i.id %} ><span class="btn btn-warning">Edit</span></a>
+                    <a href= {% url 'Delete' i.id %} ><span class="btn btn-danger">Delete</span></a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>    
+</body>
+</html>
