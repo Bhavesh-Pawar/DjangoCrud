@@ -40,6 +40,7 @@ def editData(request,id):
     if request.method=='POST':
         e_name=request.POST['name']
         e_contact=request.POST['contact']
+        print(std)
         std.name=e_name
         std.contact=e_contact
         std.save()

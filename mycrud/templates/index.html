@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Operation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href={% static 'crud.css' %}>
+    <link rel="stylesheet" href="/static/crud.css">
 <body>
 <div class="container">
     <div class="row rounded p-3 m-3 justify-content-center" id="mainHeading">
            Function Based View Model Form CRUD Operations 
     </div>
     <div class="row m-2">
-        <div class="col-md-5">
+        <div class="col-sm-5">
             <div class="rounded p-2 m-2 crudHeading text-center">
                 Add New Data
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-sm-7">
             <div class="crudHeading m-2 p-2 rounded text-center">
                 Update And Delete Your Data
             </div>
@@ -26,7 +26,7 @@
     </div> 
     
     <div class="row m-2">
-        <div class="col-5">
+        <div class="col-sm-5">
             <form action= {% url 'Add' %} method="POST"> {% csrf_token %}
                 <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
@@ -39,7 +39,7 @@
                 <button type="submit" class="btn btn-success p-2 ">ADD</button>
             </form>
         </div>
-        <div class="col-7">
+        <div class="col-sm-7">
             <table class="table">
                 <thead>
                   <tr>
