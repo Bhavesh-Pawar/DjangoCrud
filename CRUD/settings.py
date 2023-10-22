@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ')pzo_0r#jb$%$mfy0rl&0$12wa^7(0lhr$quqwcu0oug+7ilun'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': config('DATABASE_NAME',''),
+        'USER': config('DATABASE_USER',''),
+        'PASSWORD': config('DATABASE_PASSWORD',''),
+        'HOST': config('DATABASE_HOST',''),
+        'PORT': config('DATABASE_PORT',''),
     }
 }
 
